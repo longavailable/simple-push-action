@@ -17,7 +17,7 @@ inputs:
   file_pattern:
     description: Files pattern to add, wildcards supported
     required: false
-    default: ./*.*
+    default: .
   message:
     description: Commit message
     required: false
