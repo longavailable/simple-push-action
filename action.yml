@@ -10,7 +10,7 @@ inputs:
     description: User name
     required: false
     default: $GITHUB_ACTOR
-  useremal:
+  useremail:
     description: User email
     required: false
     default: $GITHUB_ACTOR@users.noreply.github.com
