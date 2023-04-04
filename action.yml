@@ -6,6 +6,14 @@ inputs:
     description: Repository name
     required: false
     default: ${{ github.repository  }}
+  username:
+    description: User name
+    required: false
+    default: $GITHUB_ACTOR
+  useremal:
+    description: User email
+    required: false
+    default: $GITHUB_ACTOR@users.noreply.github.com
   token:
     description: Personal access token (PAT) used to push the repository.
     required: false
@@ -27,10 +35,10 @@ runs:
   steps:
     - run: |
         cd ${{ inputs.path }}
-        git config user.name "jasineri/simple-push-action"
-        git config user.email "<>"
+        git config user.name ${{ inputs.username }}
+        git config user.email ${{ inputs.useremail }}
         git add ${{ inputs.file_pattern }}
-        git diff-index --quiet HEAD || git commit -m "${{ inputs.message }}" && git push https://${{ inputs.token }}@github.com/${{ inputs.repository }}.git
+        git diff-index --quiet HEAD || git commit -m "${{ inputs.message }}" && git push https://${{ inputs.username }}:${{ inputs.token }}@github.com/${{ inputs.repository }}.git
       shell: bash
 branding:
   icon: corner-right-up
